@@ -49,6 +49,7 @@ _do-fuzz-extra:
 _format-check:
 	sudo apt-get install -y clang-format-8
 	cd $(SRC_DIR)
+	ls -a
 	git branch
 	git remote -v
 	exit 0
