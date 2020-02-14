@@ -23,8 +23,6 @@ dtrace:
 	docker run $(DOCKER_RUN_OPTS) $(CONTAINER_NAME) env DTRACE_TESTS=1 make -f $(SRC_DIR)/misc/docker-ci/check.mk _check
 
 format-check:
-	pwd
-	ls -a
 	docker run $(DOCKER_RUN_OPTS) $(CONTAINER_NAME) make -f $(SRC_DIR)/misc/docker-ci/check.mk -C $(SRC_DIR) _do-format-check
 
 _check:
@@ -50,7 +48,7 @@ _do-fuzz-extra:
 
 _do-format-check:
 	sudo apt-get install -y clang-format-8
-	bash $(SRC_DIR)/misc/format_checker.sh
+	bash $(SRC_DIR)/misc/format-checker.sh
 
 enter:
 	docker run $(DOCKER_RUN_OPTS) -it $(CONTAINER_NAME) bash
