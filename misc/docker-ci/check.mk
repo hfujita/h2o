@@ -47,8 +47,11 @@ _do-fuzz-extra:
 	./h2o-fuzzer-url -close_fd_mask=3 -runs=1 -max_len=16384 $(SRC_DIR)/fuzz/url-corpus < /dev/null
 
 _do-format-check:
-	sudo apt-get install -y clang-format-8
-	bash $(SRC_DIR)/misc/format-checker.sh
+	wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+	sudo bash -c 'echo "deb http://apt.llvm.org/disco/ llvm-toolchain-disco-9 main" >> /etc/apt/sources.list.d/llvm-toolchain-9.list'
+	sudo apt-get update
+	sudo apt-get install -y clang-format-9
+	bash $(SRC_DIR)/misc/format-checker.sh -f clang-format-9 -r origin/master
 
 enter:
 	docker run $(DOCKER_RUN_OPTS) -it $(CONTAINER_NAME) bash
