@@ -52,6 +52,7 @@ _format-check:
 	#sudo apt-get install -y clang-format-8
 	mount
 	ls -a $(SRC_DIR)
+	pwd
 	cd $(SRC_DIR)
 	pwd
 	ls -a
