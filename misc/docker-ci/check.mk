@@ -47,7 +47,10 @@ _do-fuzz-extra:
 	./h2o-fuzzer-url -close_fd_mask=3 -runs=1 -max_len=16384 $(SRC_DIR)/fuzz/url-corpus < /dev/null
 
 _format-check:
-	sudo apt-get install -y clang-format-9
+	sudo apt-get install -y clang-format-8
+	cd $(SRC_DIR)
+	git branch
+	git remote -v
 	exit 0
 
 enter:
