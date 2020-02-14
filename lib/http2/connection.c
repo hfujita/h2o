@@ -1123,7 +1123,7 @@ ssize_t expect_default(h2o_http2_conn_t *conn, const uint8_t *src, size_t len, c
         if (hret != 0)
             ret = hret;
     } else {
-        h2o_error_printf("skipping frame (type:%d)\n", frame.type);
+          h2o_error_printf("skipping frame (type:%d)\n", frame.type);
     }
 
     return ret;
