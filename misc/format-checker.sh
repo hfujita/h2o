@@ -15,6 +15,8 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+cp .clang-format ${tmpdir}/
+
 ret=0
 
 # Verify code formatting using clang-format
@@ -22,7 +24,7 @@ for f in $files; do
 	git checkout-index --prefix=${tmpdir}/ $f
 	index=${tmpdir}/$f # File from current index
 	correct=$tmpdir/${f}.correct # File with correct format
-	clang-format $index > $correct
+	clang-format -style=file $index > $correct
 	diff -u $index $correct
 	if [ $? != 0 ]; then
 		ret=1
