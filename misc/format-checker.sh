@@ -9,7 +9,7 @@ if [ ! $? ]; then
 	exit 1
 fi
 
-tmpdir=`mktemp -d h2o-format-checker.XXXXXX`
+tmpdir=`mktemp --tmpdir -d h2o-format-checker.XXXXXX`
 if [ $? != 0 ]; then
 	echo "Failed to create a temp directory"
     exit 1
