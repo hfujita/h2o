@@ -50,9 +50,7 @@ _do-fuzz-extra:
 
 _do-format-check:
 	sudo apt-get install -y clang-format-8
-	git branch
-	git remote -v
-	exit 0
+	bash $(SRC_DIR)/misc/format_checker.sh
 
 enter:
 	docker run $(DOCKER_RUN_OPTS) -it $(CONTAINER_NAME) bash
