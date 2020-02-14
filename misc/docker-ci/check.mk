@@ -53,6 +53,7 @@ _format-check:
 	mount
 	ls -a $(SRC_DIR)
 	cd $(SRC_DIR)
+	pwd
 	ls -a
 	git branch
 	git remote -v
