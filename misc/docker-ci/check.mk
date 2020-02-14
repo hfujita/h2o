@@ -50,6 +50,7 @@ _do-fuzz-extra:
 
 _format-check:
 	#sudo apt-get install -y clang-format-8
+	mount
 	ls -a $(SRC_DIR)
 	cd $(SRC_DIR)
 	ls -a
