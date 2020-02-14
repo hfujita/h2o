@@ -24,6 +24,7 @@ dtrace:
 
 format-check:
 	pwd
+	ls -a
 	docker run $(DOCKER_RUN_OPTS) $(CONTAINER_NAME) make -f $(SRC_DIR)/misc/docker-ci/check.mk _format-check
 
 _check:
@@ -48,7 +49,8 @@ _do-fuzz-extra:
 	./h2o-fuzzer-url -close_fd_mask=3 -runs=1 -max_len=16384 $(SRC_DIR)/fuzz/url-corpus < /dev/null
 
 _format-check:
-	sudo apt-get install -y clang-format-8
+	#sudo apt-get install -y clang-format-8
+	ls -a $(SRC_DIR)
 	cd $(SRC_DIR)
 	ls -a
 	git branch
