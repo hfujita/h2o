@@ -25,7 +25,7 @@ dtrace:
 format-check:
 	pwd
 	ls -a
-	docker run $(DOCKER_RUN_OPTS) $(CONTAINER_NAME) make -f $(SRC_DIR)/misc/docker-ci/check.mk _format-check
+	docker run $(DOCKER_RUN_OPTS) $(CONTAINER_NAME) make -f $(SRC_DIR)/misc/docker-ci/check.mk -C $(SRC_DIR) _do-format-check
 
 _check:
 	mkdir -p build
@@ -48,14 +48,8 @@ _do-fuzz-extra:
 	./h2o-fuzzer-http2 -close_fd_mask=3 -runs=1 -max_len=16384 $(SRC_DIR)/fuzz/http2-corpus < /dev/null
 	./h2o-fuzzer-url -close_fd_mask=3 -runs=1 -max_len=16384 $(SRC_DIR)/fuzz/url-corpus < /dev/null
 
-_format-check:
-	#sudo apt-get install -y clang-format-8
-	mount
-	ls -a $(SRC_DIR)
-	pwd
-	cd $(SRC_DIR)
-	pwd
-	ls -a
+_do-format-check:
+	sudo apt-get install -y clang-format-8
 	git branch
 	git remote -v
 	exit 0
