@@ -1120,7 +1120,7 @@ ssize_t expect_default(h2o_http2_conn_t *conn, const uint8_t *src, size_t len, c
 
     if (frame.type < sizeof(FRAME_HANDLERS) / sizeof(FRAME_HANDLERS[0])) {
         int hret = FRAME_HANDLERS[frame.type](conn, &frame, err_desc);
-        if (hret != 0)
+            if (hret != 0)
             ret = hret;
     } else {
         H2O_PROBE_CONN(H2_UNKNOWN_FRAME_TYPE, &conn->super, (uint64_t) frame.type);
