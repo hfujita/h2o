@@ -301,7 +301,7 @@ static int send_headers(h2o_http2_conn_t *conn, h2o_http2_stream_t *stream)
             /* raise the priority of asset files that block rendering to highest if the user-agent is _not_ using dependency-based
              * prioritization (e.g. that of Firefox)
              */
-            h2o_http2_scheduler_rebind(&stream->_scheduler, &conn->scheduler, 257, 0);
+               h2o_http2_scheduler_rebind(&stream->_scheduler, &conn->scheduler, 257, 0);
         }
     }
 
